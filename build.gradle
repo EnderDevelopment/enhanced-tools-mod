@@ -1,0 +1,51 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '5.1.89'
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url = 'https://files.minecraftforge.net/maven'
+    }
+}
+
+ext.group = 'com.playzphantom86'
+archivesBaseName = 'betteroverhaulmod'
+version = '1.0.0'
+
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+        }
+        server {
+            workingDirectory project.file('run')
+        }
+        data {
+            workingDirectory project.file('run')
+        }
+    }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.1.0'
+    minecraft 'net.minecraft:client:1.20.1'
+    minecraft 'net.minecraft:server:1.20.1'
+
+    implementation fg.deobf('com.mojang:patchy:1.1.0')
+}
+
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'mcVersion', project.minecraft.version
+    from(sourceSets.main.resources.srcDirs) {
+        include 'META-INF/mods.toml'
+        expand 'version':project.version, 'mcVersion':project.minecraft.version
+    }
+}

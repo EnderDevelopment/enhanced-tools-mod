@@ -1,0 +1,20 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+issueTrackerURL="https://github.com/playzphantom86/BetterOverhaulMod/issues"
+
+[[mods]]
+modId="betteroverhaulmod"
+version="1.0.0"
+displayName="Better Overhaul Mod"
+authors="playzphantom86"
+description='''
+A Minecraft mod for Android with various enhancements.
+'''
+
+[[dependencies.betteroverhaulmod]]
+    modId="forge"
+    mandatory=true
+    versionRange="[47,)"
+    ordering="NONE"
+    side="BOTH"
